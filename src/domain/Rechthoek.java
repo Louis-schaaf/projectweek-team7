@@ -6,9 +6,9 @@ public class Rechthoek {
 
 
     public Rechthoek(Punt linkerBovenHoek, int breedte, int hoogte) {
-        if (breedte <= 0) throw new DomainException("Breedte moet groter zijn dan 0");
-        if (hoogte <= 0) throw new DomainException("Hoogte moet groter zijn dan 0");
-        if (linkerBovenHoek == null) throw new DomainException("Punt mag niet leeg zijn");
+        if (breedte <= 0) throw new DomainException("Breedte moet groter zijn dan 0", new IllegalArgumentException());
+        if (hoogte <= 0) throw new DomainException("Hoogte moet groter zijn dan 0", new IllegalArgumentException());
+        if (linkerBovenHoek == null) throw new DomainException("Punt mag niet leeg zijn", new IllegalArgumentException());
 
         this.breedte = breedte;
         this.hoogte = hoogte;
@@ -29,6 +29,7 @@ public class Rechthoek {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) return false;
         if (obj instanceof Rechthoek){
             Rechthoek r = (Rechthoek) obj;
             return (this.getBreedte() == r.getBreedte() && this.getHoogte() == r.getHoogte() && this.getLinkerBovenhoek().equals(r.getLinkerBovenhoek()));

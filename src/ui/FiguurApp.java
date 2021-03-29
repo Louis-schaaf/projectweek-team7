@@ -20,7 +20,6 @@ public class FiguurApp {
                     if (keuzeMenu.getValue()!=null){
 						if (keuzeMenu.getValue().equals("Cirkel")) {
 							new CirkelApp(root);
-
 						} else if (keuzeMenu.getValue().equals("Rechthoek")) {
 							new RechthoekApp(root);
 						}

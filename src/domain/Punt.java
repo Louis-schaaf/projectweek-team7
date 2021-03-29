@@ -18,6 +18,7 @@ public class Punt {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) return false;
         if (obj instanceof Punt) {
             return (((Punt) obj).getX() == this.getX() && ((Punt) obj).getY() == this.getY());
         }

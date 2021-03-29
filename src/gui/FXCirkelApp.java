@@ -11,7 +11,7 @@ public class FXCirkelApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
-        Scene scene = new Scene(root, 300,50);
+        Scene scene = new Scene(root, 800,600);
 
         new ui.CirkelApp(root);
 

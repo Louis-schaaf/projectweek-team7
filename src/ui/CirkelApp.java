@@ -61,6 +61,15 @@ public class CirkelApp {
             try {
                 int radius = Integer.parseInt(invoerRadius.getText());
                 if (radius<= 0 ) throw new DomainException("Radius moet positief zijn.", new IllegalArgumentException());
+                middelpunt = new Punt(Integer.parseInt(invoerX.getText()), Integer.parseInt(invoerY.getText()));
+                cirkel = new Cirkel (middelpunt, radius);
+
+
+                root.getChildren().clear();
+
+                Text uitvoer = new Text();
+                uitvoer.setText(cirkel.toString());
+                root.add(uitvoer, 0, 0);
             }
             catch(NumberFormatException e){
                 invoerRadius.clear();

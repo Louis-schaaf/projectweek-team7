@@ -2,6 +2,7 @@ package domain;
 
 import static org.junit.Assert.*;
 
+import domain.Punt;
 import org.junit.Before;
 import org.junit.Test;
 

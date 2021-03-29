@@ -32,7 +32,7 @@ public class SpelerApp {
 
             } catch (DomainException e) {
                 invoerNaamVeld.clear();
-				
+
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText(e.getMessage());
                 foutenboodschap.showAndWait();

@@ -12,7 +12,7 @@ public class FxPuntApp extends Application {
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
         Scene scene = new Scene(root,200,100);
-        new PuntApp(root);
+        new ui.PuntApp(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Punt App");
         primaryStage.show();

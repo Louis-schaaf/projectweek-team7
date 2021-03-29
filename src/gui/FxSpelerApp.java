@@ -15,7 +15,7 @@ public class FxSpelerApp extends Application {
         GridPane root = new GridPane();
         Scene scene = new Scene(root, 300,50);
 
-        new SpelerApp(root);
+        new ui.SpelerApp(root);
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Speler App");

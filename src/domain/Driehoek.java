@@ -5,10 +5,10 @@ public class Driehoek {
 
     public Driehoek(Punt hoekPunt1, Punt hoekPunt2, Punt hoekPunt3) {
         if (hoekPunt1 == null || hoekPunt2 == null || hoekPunt3 == null) {
-            throw new DomainException("Hoekpunten moegen niet null zijn", new IllegalArgumentException());
+            throw new DomainException("Hoekpunten mogen niet null zijn", new IllegalArgumentException());
         }
         if (liggenOp1Lijn(hoekPunt1,hoekPunt2,hoekPunt3)) {
-            throw new DomainException("Hoepunten mogen niet op 1 lijn liggen", new IllegalArgumentException());
+            throw new DomainException("Hoekpunten mogen niet op 1 lijn liggen", new IllegalArgumentException());
         }
         if (hoekPunt1.equals(hoekPunt2) || hoekPunt1.equals(hoekPunt3)|| hoekPunt2.equals(hoekPunt3)) {
             throw new DomainException("Er mogen geen twee dezelfde hoekpunten zijn",new IllegalArgumentException());

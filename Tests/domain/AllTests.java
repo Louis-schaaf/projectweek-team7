@@ -40,6 +40,11 @@ public class AllTests {
         public void test_Constructor_Met_null_middelpunt_Gooit_Exception() {
             Cirkel testCirkel = new Cirkel(null, geldigeRadius);
         }
+
+        @Test (expected = IllegalArgumentException.class)
+        public void test_Constructor_Met_Zero_Straal_Gooit_Exception() {
+            Cirkel testCirkel = new Cirkel(geldigMiddelpunt, 0);
+        }
         @Test (expected = IllegalArgumentException.class)
         public void test_Constructor_Met_nul_middelpunt_Gooit_Exception() {
             Cirkel testCirkel = new Cirkel(geldigMiddelpunt,0);

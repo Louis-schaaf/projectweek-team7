@@ -43,6 +43,6 @@ public class Cirkel extends Vorm {
     }
 
     public String toString() {
-        return this.getClass().getSimpleName()+": middelpunt: "+getMiddelpunt()+" - straal: "+getRadius()+"\n";
+        return this.getClass().getSimpleName()+": middelpunt: "+middelpunt+" - straal: "+radius+"\n";
     }
 }

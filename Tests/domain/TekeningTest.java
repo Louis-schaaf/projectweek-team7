@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TekeningTest {
-	private Vorm gebouw;
+	private Vorm gebouw, gebouw2;
 	private Vorm dak;
 	private Vorm deur;
 	private Vorm raam;
@@ -16,10 +16,12 @@ public class TekeningTest {
 	private Vorm raambalk1;
 	private Vorm raambalk2;
 	private Vorm schouwNietInTekening;
+	private Tekening tekening;
 	
 	@Before
 	public void setUp() {
 		gebouw = new Rechthoek(new Punt(100, 200), 200, 180);
+		gebouw2 = new Rechthoek(new Punt(100, 200), 200, 180);
 		dak = new Driehoek(new Punt(100, 200), new Punt(300, 200), new Punt(200, 100));
 		deur = new Rechthoek(new Punt(130, 280), 50,100);
 		raam = new Rechthoek(new Punt(210, 220), 80, 60);
@@ -27,6 +29,7 @@ public class TekeningTest {
 		raambalk1 = new LijnStuk(new Punt(210, 250), new Punt(290, 250));
 		raambalk2 = new LijnStuk(new Punt(250, 220), new Punt(250, 280));
 		schouwNietInTekening = new Rechthoek(new Punt(150, 150), 20,40);
+		tekening = new Tekening("tekening");
 	}
 
 	@Test
@@ -101,6 +104,51 @@ public class TekeningTest {
 		assertTrue(huis.equals(huisMetSchouw));
 	}
 
+	@Test (expected = DomainException.class)
+	public void voeg_toe_met_vorm_null_Gooit_exception(){
+		tekening.voegToe(null);
+	}
+
+	@Test (expected = DomainException.class)
+	public void voeg_toe_met_bestaande_vorm_gooit_exception(){
+		tekening.voegToe(gebouw);
+		tekening.voegToe(gebouw2);
+	}
+
+	@Test
+	public void voeg_toe_met_correcte_vorm_voegt_vorm_toe(){
+		tekening.voegToe(gebouw);
+		assertEquals(gebouw,tekening.getVorm(0));
+	}
+
+	@Test (expected = DomainException.class)
+	public void getvorm_met_negatieve_index_gooit_exception(){
+		tekening.getVorm(-3);
+	}
+
+	@Test (expected = DomainException.class)
+	public void getvorm_met_te_grote_index_gooit_exception(){
+		tekening.voegToe(gebouw);
+		tekening.getVorm(1);
+	}
+
+	@Test
+	public void getVorm_met_correcte_index_geeft_vorm_terug(){
+		tekening.voegToe(gebouw);
+		assertEquals(gebouw, tekening.getVorm(0));
+	}
+
+	@Test (expected = DomainException.class)
+	public void verwijder_met_verkeerde_vorm_gooit_exception(){
+		tekening.verwijder(gebouw);
+	}
+
+	@Test
+	public void verwijder_met_correct_element_verwijderd_element(){
+		tekening.voegToe(gebouw);
+		tekening.verwijder(gebouw);
+		assertEquals(0,tekening.getAantalVormen());
+	}
 
 	public Tekening createHuisMetSchouw() {
 		Tekening huisMetSchouw = new Tekening("huisMetSchouw");
@@ -128,6 +176,7 @@ public class TekeningTest {
 	}
 
 	public Tekening createHuisMetSchouwZonderDeur() {
+
 		Tekening huisMetSchouwZonderDeur = new Tekening("huisMetSchouwZonderDeur");
 		huisMetSchouwZonderDeur.voegToe(gebouw);
 		huisMetSchouwZonderDeur.voegToe(dak);
@@ -138,5 +187,6 @@ public class TekeningTest {
 		huisMetSchouwZonderDeur.voegToe(schouwNietInTekening);
 		return huisMetSchouwZonderDeur;
 	}
+
 
 }

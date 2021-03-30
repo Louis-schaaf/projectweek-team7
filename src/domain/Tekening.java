@@ -3,12 +3,12 @@ package domain;
 import java.util.ArrayList;
 
 public class Tekening {
-    private String naam;
-    private ArrayList<Vorm> vormen;
     public static final int MIN_X = 0;
     public static final int MIN_Y = 0;
     public static final int MAX_X = 399;
     public static final int MAX_Y = 399;
+    private String naam;
+    private ArrayList<Vorm> vormen;
 
 
     public Tekening(String naam) {
@@ -32,10 +32,9 @@ public class Tekening {
     }
 
     public void voegToe(Vorm vorm) {
-        if (vorm == null && this.bevat(vorm)) {
-            throw new DomainException("Vorm mag niet leeg zijn en mag niet al voorkomen.",new IllegalArgumentException());
-        }
-        else {
+        if (vorm == null || this.bevat(vorm)) {
+            throw new DomainException("Vorm mag niet leeg zijn en mag niet al voorkomen.", new IllegalArgumentException());
+        } else {
             vormen.add(vorm);
         }
     }
@@ -45,10 +44,13 @@ public class Tekening {
     }
 
     public Vorm getVorm(int nr) {
+        if (nr < 0 || nr >= vormen.size())
+            throw new DomainException("Index mag niet kleiner zijn dan 0, of groter dan het aantal elementen", new IllegalArgumentException());
         return vormen.get(nr);
     }
 
     public void verwijder(Vorm vorm) {
+        if (!this.bevat(vorm)) throw new DomainException("Vorm zit niet in deze tekening.", new IllegalArgumentException());
         vormen.remove(vorm);
     }
 
@@ -56,8 +58,7 @@ public class Tekening {
     public boolean equals(Object obj) {
         if (obj == null || !(obj instanceof Tekening)) {
             return false;
-        }
-        else {
+        } else {
             if (this.getAantalVormen() == ((Tekening) obj).getAantalVormen()) {
                 for (int i = 0; i < vormen.size(); i++) {
                     if (!this.bevat(((Tekening) obj).getVorm(i))) {
@@ -73,7 +74,7 @@ public class Tekening {
     @Override
     public String toString() {
         String uit = "Tekening: " + this.getNaam() + " \nAantal vormen: " + this.getAantalVormen() + "\nVormen: \n";
-        for (Vorm v: vormen) {
+        for (Vorm v : vormen) {
             uit += v + "\n";
         }
         return uit;

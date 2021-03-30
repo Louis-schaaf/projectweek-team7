@@ -1,29 +1,28 @@
 package gui;
 
+import domain.Tekening;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import ui.CirkelApp1;
+import ui.TekeningApp;
+import ui.VormMakenApp;
 
-import static javafx.application.Application.launch;
+public class FxTekeningApp extends Application {
 
-public class FXCirkelApp extends Application {
+
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
-        Scene scene = new Scene(root, 800,600);
-
-        new CirkelApp1(root);
-
+        Scene scene = new Scene(root);
+        Tekening tekening = new Tekening("test");
+        new VormMakenApp(root, tekening);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Cirkel App");
+        primaryStage.setTitle("Almost hangman :) ");
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-
 }
-

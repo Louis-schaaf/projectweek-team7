@@ -1,7 +1,5 @@
 package domain;
 
-
-
 public class Omhullende {
     private Punt positieLinksBoven;
     private int breedte, hoogte;

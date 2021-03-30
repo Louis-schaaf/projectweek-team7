@@ -27,6 +27,10 @@ public class Rechthoek extends Vorm {
         return linkerBovenHoek;
     }
 
+    public Omhullende getOmhullende() {
+        return new Omhullende(linkerBovenHoek,breedte,hoogte);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
@@ -42,7 +46,8 @@ public class Rechthoek extends Vorm {
         return "Rechthoek: " +
                 "linkerbovenhoek: " + linkerBovenHoek +
                 " - breedte: " + breedte +
-                " - hoogte: " + hoogte;
+                " - hoogte: " + hoogte+
+                "\nOmhullende: "+linkerBovenHoek+" - "+breedte+" - "+hoogte;
 
     }
 }

@@ -66,4 +66,14 @@ public class DriehoekTest {
         assertFalse(drieHoek.equals(null));
     }
 
+    @Test
+    public void omhullende_driehoek_is_gelijk_aan_verwachte_omhullende() {
+        Driehoek driehoek = new Driehoek(punt1,punt2,punt3);
+        driehoek.sorteerHoekpunten();
+        Punt linksboven = new Punt(driehoek.getHoekPunt1().getX(),driehoek.getHighestPunt().getY());
+        assertEquals(driehoek.getOmhullende().getLinkerBovenhoek(),linksboven);
+        assertEquals(driehoek.getOmhullende().getBreedte(),driehoek.getHoekPunt3().getX()-driehoek.getHoekPunt1().getX());
+        assertEquals(driehoek.getOmhullende().getHoogte(),driehoek.getHighestPunt().getY()-driehoek.getLowestPunt().getY());
+    }
+
 }

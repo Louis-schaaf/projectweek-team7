@@ -1,6 +1,9 @@
 package domain;
 
-public class Driehoek extends Vorm {
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Polyline;
+
+public class Driehoek extends Vorm implements Drawable {
     private Punt hoekPunt1,hoekPunt2,hoekPunt3;
 
     public Driehoek(Punt hoekPunt1, Punt hoekPunt2, Punt hoekPunt3) {
@@ -32,7 +35,7 @@ public class Driehoek extends Vorm {
         return hoekPunt3;
     }
 
-    private void sorteerHoekpunten() {
+    public void sorteerHoekpunten() {
         if (this.hoekPunt1.getX()<this.hoekPunt2.getX() && this.hoekPunt2.getX() < this.hoekPunt3.getX()) {
             return;
         }
@@ -88,6 +91,47 @@ public class Driehoek extends Vorm {
     public String toString() {
         return this.getClass().getSimpleName()+": hoekpunt 1: "+hoekPunt1+" - hoekpunt 2: "+hoekPunt2+" - hoekpunt 3: "+hoekPunt3+"\n";
 
+    }
+
+    @Override
+    public void teken(Pane root) {
+//        Polyline driehoekDak = new Polyline();
+//        driehoekDak.getPoints().addAll(new Double[]{(double) dak.getHoekPunt1().getX(), (double) dak.getHoekPunt1().getY(), (double) dak.getHoekPunt2().getX(),
+//                (double) dak.getHoekPunt2().getY(), (double) dak.getHoekPunt3().getX(), (double) dak.getHoekPunt3().getY()});
+    }
+
+    @Override
+    public Omhullende getOmhullende() {
+        sorteerHoekpunten();
+        if (getHighestPunt().equals(hoekPunt1)) {
+            return new Omhullende(hoekPunt1,hoekPunt3.getX()-hoekPunt1.getX(),getHighestPunt().getY() - getLowestPunt().getY());
+        } else if (getHighestPunt().equals(hoekPunt3)) {
+            return new Omhullende(new Punt(hoekPunt3.getX()-(hoekPunt3.getX() - hoekPunt1.getX()),hoekPunt3.getY()),hoekPunt3.getX()-hoekPunt1.getX(),getHighestPunt().getY() - getLowestPunt().getY());
+        } else if (getLowestPunt().equals(hoekPunt1)) {
+            return new Omhullende(new Punt(hoekPunt1.getX(),getHighestPunt().getY()),hoekPunt3.getX()-hoekPunt1.getX(),getHighestPunt().getY() - getLowestPunt().getY());
+        } else if (getLowestPunt().equals(getHoekPunt3())) {
+            return new Omhullende(new Punt(hoekPunt1.getX(),getHighestPunt().getY()),hoekPunt3.getX()-hoekPunt1.getX(),getHighestPunt().getY() - getLowestPunt().getY());
+        } else return null;
+    }
+
+    public Punt getHighestPunt() {
+        if (hoekPunt1.getY() > hoekPunt2.getY() && hoekPunt1.getY() > hoekPunt3.getY()) {
+            return hoekPunt1;
+        } else if (hoekPunt2.getY() > hoekPunt1.getY() && hoekPunt2.getY() > hoekPunt3.getY()) {
+            return hoekPunt2;
+        } else if (hoekPunt3.getY() > hoekPunt1.getY() && getHoekPunt3().getY() > hoekPunt2.getY()) {
+            return hoekPunt3;
+        } else return null;
+    }
+
+    public  Punt getLowestPunt() {
+        if (hoekPunt1.getY() < hoekPunt2.getY() && hoekPunt1.getY() < hoekPunt3.getY()) {
+            return hoekPunt1;
+        } else if (hoekPunt2.getY() < hoekPunt1.getY() && hoekPunt2.getY() < hoekPunt3.getY()) {
+            return hoekPunt2;
+        } else if (hoekPunt3.getY() < hoekPunt1.getY() && getHoekPunt3().getY() < hoekPunt2.getY()) {
+            return hoekPunt3;
+        } else return null;
     }
 
 }

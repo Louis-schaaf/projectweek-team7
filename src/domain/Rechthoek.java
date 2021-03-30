@@ -1,6 +1,8 @@
 package domain;
 
-public class Rechthoek extends Vorm {
+import javafx.scene.layout.Pane;
+
+public class Rechthoek extends Vorm implements Drawable {
      private int breedte, hoogte;
      private Punt linkerBovenHoek;
 
@@ -27,6 +29,12 @@ public class Rechthoek extends Vorm {
         return linkerBovenHoek;
     }
 
+    @Override
+    public void teken(Pane root) {
+
+    }
+
+    @Override
     public Omhullende getOmhullende() {
         return new Omhullende(linkerBovenHoek,breedte,hoogte);
     }

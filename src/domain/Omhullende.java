@@ -20,16 +20,16 @@ public class Omhullende {
     }
 
     public int getMinimumX() {
-        return positieLinksBoven.getX()-breedte;
+        return positieLinksBoven.getX();
     }
     public int getMinimumY() {
-        return positieLinksBoven.getY()-hoogte;
+        return positieLinksBoven.getY();
     }
     public int getMaximumX() {
         return positieLinksBoven.getX()+breedte;
     }
     public int getMaximumY() {
-        return positieLinksBoven.getY();
+        return positieLinksBoven.getY()+hoogte;
     }
 
     public Punt getLinkerBovenhoek() {

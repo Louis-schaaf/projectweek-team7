@@ -150,6 +150,8 @@ public class TekeningTest {
 		assertEquals(0,tekening.getAantalVormen());
 	}
 
+
+
 	public Tekening createHuisMetSchouw() {
 		Tekening huisMetSchouw = new Tekening("huisMetSchouw");
 		huisMetSchouw.voegToe(gebouw);

@@ -1,6 +1,9 @@
 package domain;
 
-public class LijnStuk extends Vorm {
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
+
+public class LijnStuk extends Vorm implements Drawable {
     private Punt startPunt, eindPunt;
 
     public LijnStuk (Punt startPunt, Punt eindPunt){
@@ -39,5 +42,53 @@ public class LijnStuk extends Vorm {
         return "Lijn: " +
                 "startpunt: " + startPunt +
                 " - eindpunt: " + eindPunt;
+    }
+
+    @Override
+    public Omhullende getOmhullende() {
+        return new Omhullende(getLinksbovenPunt(),getBreedte(),getHoogte());
+    }
+
+    public Punt getLinkerPunt() {
+        if (startPunt.getX() < eindPunt.getX()) {
+            return startPunt;
+        } else {
+            return eindPunt;
+        }
+    }
+
+    private Punt getAnderPunt(Punt punt) {
+        if (punt.equals(startPunt)) {
+            return eindPunt;
+        } else {
+            return startPunt;
+        }
+    }
+
+    private Punt getLinksbovenPunt() {
+        if (getLinkerPunt().getY() < getAnderPunt(getLinkerPunt()).getY()) {
+            return new Punt(getLinkerPunt().getX(),getAnderPunt(getLinkerPunt()).getY());
+        } else {
+            return getLinkerPunt();
+        }
+    }
+
+    public int getHoogte() {
+        if (getLinkerPunt().getY() < getAnderPunt(getLinkerPunt()).getY()) {
+            return getAnderPunt(getLinkerPunt()).getY()-getLinkerPunt().getY();
+        } else {
+            return getLinkerPunt().getY()-getAnderPunt(getLinkerPunt()).getY();
+        }
+    }
+
+    public int getBreedte() {
+        return getAnderPunt(getLinkerPunt()).getX()-getLinkerPunt().getX();
+    }
+
+    @Override
+    public void teken(Pane root) {
+        Line lijn = new Line(this.getStartPunt().getX(), this.getStartPunt().getY(), this.getEindPunt().getX(), this.getEindPunt().getY());
+//        lijn.setStrokeWidth(5);
+        root.getChildren().add(lijn);
     }
 }

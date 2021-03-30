@@ -34,9 +34,12 @@ public class Tekening {
     public void voegToe(Vorm vorm) {
         if (vorm == null || this.bevat(vorm)) {
             throw new DomainException("Vorm mag niet leeg zijn en mag niet al voorkomen.", new IllegalArgumentException());
-        } else {
-            vormen.add(vorm);
         }
+        Omhullende omhullende = vorm.getOmhullende();
+        if (omhullende.getMinimumX()<MIN_X || omhullende.getMinimumY()<MIN_Y || omhullende.getMaximumX()>MAX_X || omhullende.getMaximumY()>MAX_Y){
+            throw new DomainException("De vorm die u wilt toevoegen past niet binnen het tekenvenster", new IllegalArgumentException());
+        }
+        vormen.add(vorm);
     }
 
     public boolean bevat(Vorm vorm) {

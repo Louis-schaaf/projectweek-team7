@@ -42,5 +42,13 @@ public class CirkelTest {
             Cirkel testCirkel = new Cirkel(geldigMiddelpunt, ongeldigeRadius);
         }
 
+        @Test
+        public void omhullende_cirkel_is_gelijk_aan_verwachte_omhullende() {
+            Cirkel cirkel = new Cirkel(geldigMiddelpunt,geldigeRadius);
+            assertEquals(cirkel.getOmhullende().getBreedte(),cirkel.getRadius()*2);
+            assertEquals(cirkel.getOmhullende().getHoogte(),cirkel.getRadius()*2);
+            assertEquals(cirkel.getOmhullende().getLinkerBovenhoek(),new Punt(cirkel.getMiddelpunt().getX()-cirkel.getRadius(),cirkel.getMiddelpunt().getY()-cirkel.getRadius()));
+        }
+
 
 }

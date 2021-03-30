@@ -56,6 +56,14 @@ public class LijnStukTest {
 		assertTrue(lijn1.equals(lijn2));
 	}
 
+	@Test
+	public void omhullende_lijnstuk_is_gelijk_aan_verwachte_omhullende() {
+		LijnStuk lijnStuk = new LijnStuk(punt1,punt2);
+		assertEquals(lijnStuk.getOmhullende().getBreedte(),lijnStuk.getBreedte());
+		assertEquals(lijnStuk.getOmhullende().getHoogte(), lijnStuk.getHoogte());
+		assertEquals(lijnStuk.getOmhullende().getLinkerBovenhoek(),new Punt(lijnStuk.getLinkerPunt().getX(),lijnStuk.getLinkerPunt().getY() + lijnStuk.getHoogte()));
+	}
+
 
 }
 	

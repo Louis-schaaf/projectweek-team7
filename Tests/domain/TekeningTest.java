@@ -150,7 +150,67 @@ public class TekeningTest {
 		assertEquals(0,tekening.getAantalVormen());
 	}
 
+	@Test(expected = DomainException.class)
+	public void voegToe_met_rechthoek_beginPunt_juist_en_breedte_Buiten_tekening_gooit_exception(){
+		Punt punt = new Punt(10,10);
+		Rechthoek rechthoek = new Rechthoek(punt,500,10);
+		tekening.voegToe(rechthoek);
+	}
 
+	@Test(expected = DomainException.class)
+	public void voegToe_met_rechthoek_beginPunt_juist_en_hoogte_Buiten_tekening_gooit_exception(){
+		Punt punt = new Punt(10,10);
+		Rechthoek rechthoek = new Rechthoek(punt,10,500);
+		tekening.voegToe(rechthoek);
+	}
+
+	@Test(expected = DomainException.class)
+	public void voegToe_met_lijnstuk_beginPunt_x_Buiten_tekening_gooit_exception(){
+		Punt beginPunt = new Punt(500,10);
+		Punt eindPunt = new Punt(10,10);
+		LijnStuk lijnStuk = new LijnStuk(beginPunt,eindPunt);
+		tekening.voegToe(lijnStuk);
+	}
+
+	@Test(expected = DomainException.class)
+	public void voegToe_met_lijnstuk_beginPunt_y_Buiten_tekening_gooit_exception(){
+		Punt beginPunt = new Punt(10,500);
+		Punt eindPunt = new Punt(10,10);
+		LijnStuk lijnStuk = new LijnStuk(beginPunt,eindPunt);
+		tekening.voegToe(lijnStuk);
+	}
+
+	@Test(expected = DomainException.class)
+	public void voegToe_met_lijnstuk_eindPunt_x_Buiten_tekening_gooit_exception(){
+		Punt beginPunt = new Punt(10,10);
+		Punt eindPunt = new Punt(500,10);
+		LijnStuk lijnStuk = new LijnStuk(beginPunt,eindPunt);
+		tekening.voegToe(lijnStuk);
+	}
+
+	@Test(expected = DomainException.class)
+	public void voegToe_met_lijnstuk_eindPunt_y_Buiten_tekening_gooit_exception(){
+		Punt beginPunt = new Punt(10,10);
+		Punt eindPunt = new Punt(10,500);
+		LijnStuk lijnStuk = new LijnStuk(beginPunt,eindPunt);
+		tekening.voegToe(lijnStuk);
+	}
+
+	@Test(expected = DomainException.class)
+	public void voegToe_met_cirkel_met_straal_Buiten_tekening_gooit_exception(){
+		Punt middenPunt = new Punt(10,10);
+		Cirkel cirkel = new Cirkel(middenPunt,500);
+		tekening.voegToe(cirkel);
+	}
+
+	@Test(expected = DomainException.class)
+	public void voegToe_met_driehoek_met_punt_Buiten_tekening_gooit_exception(){
+		Punt hoekpunt1 = new Punt(10,10);
+		Punt hoekpunt2 = new Punt(20,20);
+		Punt hoekpunt3 = new Punt(500,520);
+		Driehoek driehoek = new Driehoek(hoekpunt1,hoekpunt3,hoekpunt2);
+		tekening.voegToe(driehoek);
+	}
 
 	public Tekening createHuisMetSchouw() {
 		Tekening huisMetSchouw = new Tekening("huisMetSchouw");

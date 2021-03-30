@@ -1,6 +1,7 @@
 package domain;
 
-import java.awt.*;
+
+import javafx.scene.paint.Color;
 
 public abstract class Vorm {
     private Color kleur;
@@ -17,5 +18,8 @@ public abstract class Vorm {
     public abstract String toString();
 
     public abstract Omhullende getOmhullende();
+
+
+
 }
 

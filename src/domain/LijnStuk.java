@@ -88,7 +88,7 @@ public class LijnStuk extends Vorm implements Drawable {
     @Override
     public void teken(Pane root) {
         Line lijn = new Line(this.getStartPunt().getX(), this.getStartPunt().getY(), this.getEindPunt().getX(), this.getEindPunt().getY());
-//        lijn.setStrokeWidth(5);
+        lijn.setStrokeWidth(5);
         root.getChildren().add(lijn);
     }
 }

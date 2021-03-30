@@ -1,8 +1,10 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+
 import java.util.ArrayList;
 
-public class Tekening {
+public class Tekening implements Drawable {
     public static final int MIN_X = 0;
     public static final int MIN_Y = 0;
     public static final int MAX_X = 399;
@@ -81,5 +83,15 @@ public class Tekening {
             uit += v + "\n";
         }
         return uit;
+    }
+
+    @Override
+    public void teken(Pane root) {
+        for (Vorm v:vormen) {
+            if (v instanceof Drawable){
+                Drawable d = (Drawable) v;
+                d.teken(root);
+            }
+        }
     }
 }

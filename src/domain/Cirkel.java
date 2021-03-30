@@ -1,6 +1,7 @@
 package domain;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Cirkel extends Vorm implements Drawable {
@@ -53,6 +54,8 @@ public class Cirkel extends Vorm implements Drawable {
     public void teken(Pane root) {
         Circle cirkel = new Circle(this.getMiddelpunt().getX(), this.getMiddelpunt().getY(), this.getRadius());
         root.getChildren().add(cirkel);
+        cirkel.setFill(super.getKleur());
+        cirkel.setStroke(Color.BLACK);
 
     }
 

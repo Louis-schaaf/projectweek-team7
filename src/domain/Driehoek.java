@@ -75,6 +75,39 @@ public class Driehoek extends Vorm implements Drawable {
 
     }
 
+    public Punt getHighestPunt() {
+        if (hoekPunt1.getY() > hoekPunt2.getY() && hoekPunt1.getY() > hoekPunt3.getY()) {
+            return hoekPunt1;
+        } else if (hoekPunt2.getY() > hoekPunt1.getY() && hoekPunt2.getY() > hoekPunt3.getY()) {
+            return hoekPunt2;
+        } else if (hoekPunt3.getY() > hoekPunt1.getY() && getHoekPunt3().getY() > hoekPunt2.getY()) {
+            return hoekPunt3;
+        } else return null;
+    }
+
+    public  Punt getLowestPunt() {
+        if (hoekPunt1.getY() < hoekPunt2.getY() && hoekPunt1.getY() < hoekPunt3.getY()) {
+            return hoekPunt1;
+        } else if (hoekPunt2.getY() < hoekPunt1.getY() && hoekPunt2.getY() < hoekPunt3.getY()) {
+            return hoekPunt2;
+        } else if (hoekPunt3.getY() < hoekPunt1.getY() && getHoekPunt3().getY() < hoekPunt2.getY()) {
+            return hoekPunt3;
+        } else return null;
+    }
+
+    public Omhullende getOmhullende() {
+        sorteerHoekpunten();
+        if (getHighestPunt().equals(hoekPunt1)) {
+            return new Omhullende(hoekPunt1,hoekPunt3.getX()-hoekPunt1.getX(),getHighestPunt().getY() - getLowestPunt().getY());
+        } else if (getHighestPunt().equals(hoekPunt3)) {
+            return new Omhullende(new Punt(hoekPunt3.getX()-(hoekPunt3.getX() - hoekPunt1.getX()),hoekPunt3.getY()),hoekPunt3.getX()-hoekPunt1.getX(),getHighestPunt().getY() - getLowestPunt().getY());
+        } else if (getLowestPunt().equals(hoekPunt1)) {
+            return new Omhullende(new Punt(hoekPunt1.getX(),getHighestPunt().getY()),hoekPunt3.getX()-hoekPunt1.getX(),getHighestPunt().getY() - getLowestPunt().getY());
+        } else if (getLowestPunt().equals(getHoekPunt3())) {
+            return new Omhullende(new Punt(hoekPunt1.getX(),getHighestPunt().getY()),hoekPunt3.getX()-hoekPunt1.getX(),getHighestPunt().getY() - getLowestPunt().getY());
+        } else return null;
+    }
+
     public boolean equals(Object driehoek) {
         if (driehoek == null || !(driehoek instanceof  Driehoek)) {
             return false;

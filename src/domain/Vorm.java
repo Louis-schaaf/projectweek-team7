@@ -3,6 +3,7 @@ package domain;
 import java.awt.*;
 
 public abstract class Vorm {
+//    public abstract Punt getMiddelPunt();
     private Color kleur;
 
     public Color getKleur() {
@@ -10,7 +11,6 @@ public abstract class Vorm {
     }
 
     public abstract String toString();
-    public abstract Omhullende getOmhullende();
-    public abstract Punt getMiddelPunt();
+//    public abstract Omhullende getOmhullende();
 }
 

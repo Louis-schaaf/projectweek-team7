@@ -6,7 +6,7 @@ public class Omhullende {
 
     public Omhullende(Punt positieLinksBoven, int breedte, int hoogte) {
         if (positieLinksBoven == null) {
-            throw new DomainException("positielinksboven mag niet null zijn.", new IllegalArgumentException());
+            throw new DomainException("positie linksboven mag niet null zijn.", new IllegalArgumentException());
         }
         if (breedte < 0) {
             throw new DomainException("breedte moet positief zijn.", new IllegalArgumentException());

@@ -14,7 +14,7 @@ public class FxTekeningApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,800,600);
         Tekening tekening = new Tekening("test");
         new VormMakenApp(root, tekening);
         primaryStage.setScene(scene);

@@ -20,7 +20,7 @@ public class Tekening {
     }
 
     public static boolean isValidNaam(String naam) {
-        return naam != null && !naam.isBlank();
+        return naam != null && !naam.trim().isEmpty();
     }
 
     public String getNaam() {

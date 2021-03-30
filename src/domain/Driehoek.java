@@ -68,7 +68,6 @@ public class Driehoek extends Vorm {
                 this.hoekPunt2 = this.hoekPunt3;
                 this.hoekPunt2 = hoekpunt;
             }
-            return;
         }
 
     }

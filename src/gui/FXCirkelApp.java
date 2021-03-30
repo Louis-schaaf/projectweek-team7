@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import ui.CirkelApp1;
+import ui.CirkelApp;
 
 import static javafx.application.Application.launch;
 
@@ -14,7 +14,7 @@ public class FXCirkelApp extends Application {
         GridPane root = new GridPane();
         Scene scene = new Scene(root, 800,600);
 
-        new CirkelApp1(root);
+        new CirkelApp(root);
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Cirkel App");

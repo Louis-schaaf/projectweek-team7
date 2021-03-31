@@ -1,5 +1,5 @@
 
-package ui;
+package gui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

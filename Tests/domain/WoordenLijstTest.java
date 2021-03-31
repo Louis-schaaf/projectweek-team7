@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -63,4 +64,14 @@ public class WoordenLijstTest {
 		woordenlijstMetGeldigeWoorden.voegToe(woordAlInLijst);
 	}
 
+	@Test (expected = DomainException.class)
+	public void getRandomWoord_moet_exception_gooien_als_lijst_leeg_is() {
+		woordenlijstLeeg.getRandomWoord();
+	}
+
+	@Test
+	public void getRandomWoord_geeft_random_woord() {
+		assertTrue(woordenlijstMetGeldigeWoorden.getRandomWoord() == "test" || woordenlijstMetGeldigeWoorden.getRandomWoord() == "game"
+				|| woordenlijstMetGeldigeWoorden.getRandomWoord() == "hangman");
+	}
 }

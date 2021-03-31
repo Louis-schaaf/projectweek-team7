@@ -66,7 +66,7 @@ public class LijnStuk extends Vorm implements Drawable {
     }
 
     private Punt getLinksbovenPunt() {
-        if (getLinkerPunt().getY() < getAnderPunt(getLinkerPunt()).getY()) {
+        if (getLinkerPunt().getY() > getAnderPunt(getLinkerPunt()).getY()) {
             return new Punt(getLinkerPunt().getX(),getAnderPunt(getLinkerPunt()).getY());
         } else {
             return getLinkerPunt();

@@ -89,8 +89,10 @@ public class Tekening implements Drawable {
     public void teken(Pane root) {
         for (Vorm v:vormen) {
             if (v instanceof Drawable){
-                Drawable d = (Drawable) v;
-                d.teken(root);
+                if (v.isZichtbaar()){
+                    Drawable d = (Drawable) v;
+                    d.teken(root);
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 
 public abstract class Vorm {
     private Color kleur;
+    private boolean isZichtbaar = true;
 
     public Color getKleur() {
         return this.kleur;
@@ -18,6 +19,14 @@ public abstract class Vorm {
     public abstract String toString();
 
     public abstract Omhullende getOmhullende();
+
+    public boolean isZichtbaar(){
+        return this.isZichtbaar;
+    }
+
+    public void setZichtbaar(boolean bool){
+        this.isZichtbaar = bool;
+    }
 
 
 

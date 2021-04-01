@@ -53,10 +53,25 @@ public class Controller extends HttpServlet {
             case "download":
                 destination = download(request,response);
                 break;
+            case "pasAan":
+                destination = pasAan(request);
+                break;
             default:
                 destination = goHome(request);
         }
         request.getRequestDispatcher(destination).forward(request, response);
+    }
+
+    private String pasAan(HttpServletRequest request) {
+        String woordParam = request.getParameter("woord");
+        Woord woord = woordenlijst.vind(woordParam);
+
+        request.setAttribute("woordPreviousValue", woord.getWoord());
+        request.setAttribute("niveauPreviousValue", woord.getNiveau());
+
+        woordenlijst.verwijder(woordParam);
+
+        return "add.jsp";
     }
 
     private String download(HttpServletRequest request, HttpServletResponse response) throws IOException {

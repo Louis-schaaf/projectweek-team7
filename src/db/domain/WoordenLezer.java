@@ -18,16 +18,17 @@ public class WoordenLezer {
     }
 
     public WoordenLijst lees() {
+        WoordenLijst woordenLijst = new WoordenLijst();
         try {
             Scanner fileScanner = new Scanner(file);
             //Scanner fileScanner = new Scanner(new File("C:\\Gip\\project\\projectweek-team7\\src\\db\\domain\\hangman(1).txt"));
-            WoordenLijst woordenLijst = new WoordenLijst();
+
             while (fileScanner.hasNext()) {
-                woordenLijst.voegToe(fileScanner.next());
+                woordenLijst.voegToe(fileScanner.nextLine());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-       return null;
+       return woordenLijst;
     }
 }

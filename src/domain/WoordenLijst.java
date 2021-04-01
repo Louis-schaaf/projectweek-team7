@@ -14,7 +14,7 @@ public class WoordenLijst {
         if (s == null) {
             throw new DomainException("string mag niet null zijn.", new IllegalArgumentException());
         }
-        if (s.isBlank()) {
+        if (s.isEmpty()) {
             throw new DomainException("geef een geldige string in.", new IllegalArgumentException());
         }
         if (lijst.contains(s)) {

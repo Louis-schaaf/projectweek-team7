@@ -1,4 +1,4 @@
-package ui;
+package gui;
 
 import domain.Speler;
 import javafx.application.Application;
@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import ui.WoordRadenApp;
 
 public class FxWoordRadenApp extends Application {
 
@@ -21,7 +22,7 @@ public class FxWoordRadenApp extends Application {
         invoerNaam.setOnAction(eventIngaveNaam -> {
             primaryStage.setTitle(invoerNaam.getText());
             root.getChildren().clear();
-            new WoordRadenApp(root, new Speler(invoerNaam.getText()));
+            new WoordRadenApp(root, new Speler(invoerNaam.getText()),"src/db/domain/hangman(1).txt");
         });
 
         primaryStage.show();

@@ -1,12 +1,13 @@
 package ui;
 
-import domain.HintWoord;
-import domain.Speler;
-import domain.Tekening;
+import db.domain.WoordenLezer;
+import domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+
+import java.io.File;
 
 public class WoordRadenApp {
     private Label naamLabel, woordLabel, letterLabel;
@@ -16,10 +17,20 @@ public class WoordRadenApp {
 
     private TextField invoerLetter;
     private TextArea uitvoer;
-    private HintWoord woord = new HintWoord("Hangmanspelletje");
+    private String filePath;
+    WoordenLezer woordenLezer;
+    private HintWoord woord;
 
+    public WoordRadenApp(GridPane root, Speler speler, String filePath) {
+        if (filePath.equals(null) || filePath.trim().isEmpty()) {
+            throw new DomainException("geef een geldige filepath in.", new IllegalArgumentException());
+        }
 
-    public WoordRadenApp(GridPane root, Speler speler) {
+        this.filePath = filePath;
+        woordenLezer = new WoordenLezer(new File(filePath));
+        if (woordenLezer != null) {
+            woord = new HintWoord(woordenLezer.lees().getRandomWoord());
+        }
 
         uitvoer = new TextArea();
         naamLabel = new Label("Rara welk woord zoeken we? ");

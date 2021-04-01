@@ -1,5 +1,7 @@
 package domain;
 
+import static java.lang.Character.isWhitespace;
+
 public class HintWoord {
     private HintLetter[] hintwoord;
 
@@ -7,6 +9,9 @@ public class HintWoord {
         hintwoord = new HintLetter[woord.length()];
         for (int i=0; i< woord.length();i++) {
             hintwoord[i] = new HintLetter(woord.charAt(i));
+            if (isWhitespace(hintwoord[i].getLetter())) {
+                hintwoord[i].setGeraden();
+            }
         }
 
     }

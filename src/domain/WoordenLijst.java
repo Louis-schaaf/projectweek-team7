@@ -31,6 +31,7 @@ public class WoordenLijst {
         if (lijst.size() < 1) {
             throw new DomainException("de lijst is leeg.", new IllegalArgumentException());
         }
-        return lijst.get((int)Math.random()*(lijst.size()-1));
+        return lijst.get((int) (Math.random() * (lijst.size() - 1)));
     }
-}
+
+    }

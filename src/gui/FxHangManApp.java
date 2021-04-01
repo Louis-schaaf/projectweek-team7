@@ -1,4 +1,4 @@
-package ui;
+package gui;
 
 import db.domain.WoordenLezer;
 import domain.Speler;
@@ -10,18 +10,21 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import ui.HangManApp;
+
+import java.io.File;
 
 public class FxHangManApp extends Application {
 
 
     @Override
     public void start(Stage primaryStage) {
-        WoordenLezer woordenlezer = new WoordenLezer("hangman.txt");
+        WoordenLezer woordenlezer = new WoordenLezer(new File("hangman.txt"));
         WoordenLijst woordenlijst = woordenlezer.lees();
 
         VBox root = new VBox();
         Scene scene = new Scene(root,400,450);
-        TextField invoerNaam = new TextField("Geef de naam van de speler");
+        TextField invoerNaam = new TextField("  Geef de naam van de speler");
         root.getChildren().add(invoerNaam);
 
         primaryStage.setScene(scene);
@@ -34,7 +37,9 @@ public class FxHangManApp extends Application {
         });
 
         primaryStage.show();
+
     }
+
 
     public static void main(String[] args) {
         launch(args);

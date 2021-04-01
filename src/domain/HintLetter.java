@@ -31,6 +31,10 @@ public class HintLetter {
 
     }
 
+    public void setGeraden() {
+        this.isGeraden = true;
+    }
+
     public boolean isGeraden() {
         return isGeraden;
     }

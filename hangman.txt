@@ -1,3 +1,4 @@
+namiddag
 overerving
 statisch type
 dynamisch type

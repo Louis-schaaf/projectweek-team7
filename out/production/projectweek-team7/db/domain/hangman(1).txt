@@ -1,3 +1,4 @@
+goedemorgen
 overerving
 statisch type
 dynamisch type

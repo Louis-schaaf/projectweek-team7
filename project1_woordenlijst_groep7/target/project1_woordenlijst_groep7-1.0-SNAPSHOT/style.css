@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: roboto, sans-serif;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1200px;
+    background-color: #a5a5a5;
+}
+
+nav {
+    background-color: #404042;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 0;
+}
+
+nav ul li{
+    margin: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 30px;
+}
+
+.active{
+    background-color: #105ba9;
+}
+
+nav ul li a:hover {
+    background-color: white;
+    color: #404042;
+}
+
+main, footer {
+    padding: 10px 0px 10px 20px;
+    background-color: white;
+}
+
+main {
+    min-height: 200px;
+}
+
+footer {
+    background-color: #105ba9;
+    color: white;
+    text-align: center;
+}
+
+#titel{
+    margin:auto;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+li:first-child {
+    margin-bottom: 20px;
+    flex: 2;
+}
+
+h2 {
+    padding: 0 0 10px 0;
+}
+
+.link, span {
+    color: blue;
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    text-align: left;
+}
+
+td:nth-child(3) {
+    overflow: auto;
+    max-width: 500px;
+}
+
+p {
+    margin-top: 7px;
+    line-height: 1.5em;
+}
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    margin-top: 20px;
+
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    line-height: 2em;
+    border: 1px solid #aaa;
+    border-radius: 0.4rem;
+}
+
+#reqFields {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.alert-danger{
+    background-color: #ff8080;
+    border: 2px solid red;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+}
+
+.alert-danger ul {
+    padding: 10px 15px;
+    list-style: none;
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        padding-left: 0;
+        padding-right: 0;
+        min-height: 380px;
+    }
+
+    h2 {
+        margin-left: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding-left: 0;
+    }
+
+    nav ul li {
+        text-align: center;
+        margin: 0;
+    }
+
+    nav ul li a{
+        display: block;
+        width: 100%;
+        padding: 30px 0;
+    }
+
+    form {
+        width: 80%;
+        margin: 10px auto;
+    }
+}

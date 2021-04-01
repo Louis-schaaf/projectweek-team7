@@ -36,4 +36,47 @@ public class Woordenlijst {
         if(index == -1) return null;
         return woorden.get(index);
     }
+
+    public int getAantalWoorden(){
+        return woorden.size();
+    }
+
+    public Woord getLangsteWoord(){
+        if (woorden.size() != 0){
+            Woord langste = woorden.get(0);
+            for (Woord w:woorden) {
+                if(langste.getAantalLetters() < w.getAantalLetters()){
+                    langste = w;
+                }
+            }
+            return langste;
+        } else{
+            return null;
+        }
+    }
+
+    public Woord getKortsteWoord(){
+        if (woorden.size() != 0){
+            Woord kortste = woorden.get(0);
+            for (Woord w:woorden) {
+                if(kortste.getAantalLetters() > w.getAantalLetters()){
+                    kortste = w;
+                }
+            }
+            return kortste;
+        } else{
+            return null;
+        }
+    }
+
+    public int getGemiddeldeVerschillendeLettersVanAlleWoorden(){
+        if (woorden.size() == 0){
+            return 0;
+        }
+        int gemiddelde = 0;
+        for (Woord w: woorden) {
+            gemiddelde += w.getVerschillendeLetters();
+        }
+        return gemiddelde / woorden.size();
+    }
 }

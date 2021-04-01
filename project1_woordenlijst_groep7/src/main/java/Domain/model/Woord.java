@@ -10,7 +10,7 @@ public class Woord {
 
     public void setWoord(String woord) {
         if(woord == null || woord.trim().isEmpty()) throw new DomainException("Woord mag niet leeg zijn.", new IllegalArgumentException());
-        this.woord = woord;
+        this.woord = woord.trim();
     }
 
     public void setNiveau(String niveau){
@@ -30,4 +30,13 @@ public class Woord {
     public String getNiveau() {
         return niveau;
     }
+
+    public int getAantalLetters(){
+        return woord.length();
+    }
+
+    public int getVerschillendeLetters() {
+        return (int) this.woord.toLowerCase().chars().distinct().count();
+    }
+
 }

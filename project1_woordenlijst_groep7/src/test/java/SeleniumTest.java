@@ -36,11 +36,9 @@ public class SeleniumTest {
     public void test_voeg_toe_met_correcte_velden_voegt_toe(){
         driver.get(url + "Controller?command=pageAdd");
 
-        int rand =new Random().nextInt(100);
-
         WebElement inputNaam = driver.findElement(By.id("woord"));
         inputNaam.clear();
-        inputNaam.sendKeys("koekje"+rand);
+        inputNaam.sendKeys("koekje");
 
         driver.findElement(By.id("bevestig")).click();
 
@@ -48,7 +46,7 @@ public class SeleniumTest {
         assertEquals("Woordenlijst", driver.findElement(By.tagName("h2")).getText());
 
         ArrayList<WebElement> lis = (ArrayList<WebElement>) driver.findElements(By.tagName("li"));
-        assertTrue(containsWebElementsWithText(lis,"koekje"+rand));
+        assertTrue(containsWebElementsWithText(lis,"koekje"));
     }
 
     @Test
@@ -70,6 +68,20 @@ public class SeleniumTest {
         assertTrue(containsWebElementsWithText(errorMessages,"Woord mag niet leeg zijn."));
         assertFalse(containsWebElementsWithText(errorMessages,"Woord zit al in woordenlijst"));
         assertFalse(containsWebElementsWithText(errorMessages,"Het niveau dat u ingaf is incorrect."));
+
+    }
+
+    @Test
+    public void test_statistieken(){
+        driver.get(url + "Controller");
+        assertEquals("Beheerapplicatie woordenlijst",driver.getTitle());
+
+        ArrayList<WebElement> stats = (ArrayList<WebElement>) driver.findElements(By.tagName("p"));
+
+        assertTrue(containsWebElementsWithText(stats,"Deze woordenlijst heeft 1 woord(en)"));
+        assertTrue(containsWebElementsWithText(stats,"Het langste woord is koekje"));
+        assertTrue(containsWebElementsWithText(stats,"Het korste woord is koekje"));
+        assertTrue(containsWebElementsWithText(stats,"Het gemiddeld aantal verschillende letters van alle woorden 4"));
 
     }
 

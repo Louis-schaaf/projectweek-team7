@@ -77,7 +77,12 @@ public class Controller extends HttpServlet {
     }
 
     private String goHome(HttpServletRequest request) {
-       return "index.jsp";
+        request.setAttribute("aantalWoorden", woordenlijst.getAantalWoorden());
+        request.setAttribute("langsteWoord", woordenlijst.getLangsteWoord());
+        request.setAttribute("kortsteWoord",woordenlijst.getKortsteWoord());
+        request.setAttribute("gemiddelde",woordenlijst.getGemiddeldeVerschillendeLettersVanAlleWoorden());
+        request.setAttribute("woordenlijst", woordenlijst.getAlle());
+        return "index.jsp";
     }
 
     private String add(HttpServletRequest request) {

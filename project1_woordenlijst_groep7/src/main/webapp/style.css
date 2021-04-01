@@ -16,7 +16,7 @@ nav {
     margin: 0;
 }
 
-nav ul {
+nav ul, #filter {
     list-style-type: none;
     display: flex;
     justify-content: center;
@@ -58,10 +58,6 @@ footer {
     text-align: center;
 }
 
-#titel{
-    margin:auto;
-}
-
 h1 {
     padding: 0;
     margin: 0;
@@ -75,24 +71,6 @@ nav li:first-child {
 
 h2 {
     padding: 0 0 10px 0;
-}
-
-.link, span {
-    color: blue;
-    text-decoration: underline;
-}
-
-table {
-    width: 100%;
-}
-
-td, th {
-    text-align: left;
-}
-
-td:nth-child(3) {
-    overflow: auto;
-    max-width: 500px;
 }
 
 p {
@@ -121,10 +99,14 @@ input, textarea, select {
     border-radius: 0.4rem;
 }
 
-section button {
+section > button {
+    width: 600px;
+    /*height: 40px;*/
+}
+
+section button{
     display: block;
     margin: 0 auto;
-    width: 600px;
     height: 40px;
     line-height: 2em;
     border: 1px solid #aaa;
@@ -156,6 +138,12 @@ section button a{
     padding: 10px 15px;
     list-style: none;
 }
+
+#filter button{
+    padding: 0 30px;
+    margin: 0 30px;
+}
+
 
 @media screen and (max-width: 600px) {
     main {

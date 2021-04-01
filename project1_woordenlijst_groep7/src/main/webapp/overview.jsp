@@ -23,19 +23,30 @@
     <section>
         <h2>Woordenlijst</h2>
 
+        
+        <article>
+            <ul id="filter">
+                <li><button><a href="Controller?command=overview">Alle</a></button></li>
+                <li><button><a href="Controller?command=overview&filter=beginner">Beginner</a></button></li>
+                <li><button><a href="Controller?command=overview&filter=expert">Expert</a></button></li>
+            </ul>
+        </article>
 
-        <c:choose>
+        <article>
+            <c:choose>
             <c:when test="${woorden.size()==0}">
                 <p>Er zijn nog geen woorden toegevoegd</p>
             </c:when>
             <c:otherwise>
                 <ol>
                     <c:forEach var="woord" items="${woorden}">
-                        <li>${woord.getWoord()} <c:if test="${woord.getNiveau() != null}">- ${woord.getNiveau()}</c:if></li>
+                        <li>${woord.getWoord()} <c:if
+                                test="${woord.getNiveau() != null}">- ${woord.getNiveau()}</c:if></li>
                     </c:forEach>
                 </ol>
             </c:otherwise>
         </c:choose>
+        </article>
 
 
         <button><a href="Controller?command=download">Download woordenlijst</a></button>

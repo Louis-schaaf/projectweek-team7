@@ -133,7 +133,19 @@ public class Controller extends HttpServlet {
     }
 
     private String showOverview(HttpServletRequest request) {
-        request.setAttribute("woorden", woordenlijst.getAlle());
+        String filter = request.getParameter("filter");
+        if (filter == null) filter = "alle";
+        switch (filter) {
+            case "beginner":
+                request.setAttribute("woorden",woordenlijst.getBeginner());
+                break;
+            case "expert":
+                request.setAttribute("woorden",woordenlijst.getExpert());
+                break;
+            default:
+                request.setAttribute("woorden", woordenlijst.getAlle());
+        }
+
         return "overview.jsp";
     }
 

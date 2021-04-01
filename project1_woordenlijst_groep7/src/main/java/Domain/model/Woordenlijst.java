@@ -79,4 +79,24 @@ public class Woordenlijst {
         }
         return gemiddelde / woorden.size();
     }
+
+    public ArrayList<Woord> getBeginner() {
+        ArrayList<Woord> Beginners = new ArrayList<>();
+        for (Woord w:woorden) {
+            if (w.getNiveau()!=null && w.getNiveau().equals("Beginner")){
+                Beginners.add(w);
+            }
+        }
+        return Beginners;
+    }
+
+    public ArrayList<Woord> getExpert() {
+        ArrayList<Woord> Experts = new ArrayList<>();
+        for (Woord w:woorden) {
+            if (w.getNiveau()!=null && w.getNiveau().equals("Expert")){
+                Experts.add(w);
+            }
+        }
+        return Experts;
+    }
 }

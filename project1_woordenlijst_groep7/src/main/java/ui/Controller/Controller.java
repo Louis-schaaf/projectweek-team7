@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 @WebServlet("/Controller")
@@ -49,10 +50,24 @@ public class Controller extends HttpServlet {
             case "pageZoek":
                 destination = "zoek.jsp";
                 break;
+            case "download":
+                destination = download(request,response);
+                break;
             default:
                 destination = goHome(request);
         }
         request.getRequestDispatcher(destination).forward(request, response);
+    }
+
+    private String download(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String filename = "woorden.txt";
+        response.setContentType("APPLICATION/OCTET-STREAM");
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + filename +
+                "\""); PrintWriter out = response.getWriter();
+        for (Woord woord : woordenlijst.getAlle())
+            out.println(woord.getWoord());
+        out.close();
+        return showOverview(request);
     }
 
     private String delete(HttpServletRequest request) {

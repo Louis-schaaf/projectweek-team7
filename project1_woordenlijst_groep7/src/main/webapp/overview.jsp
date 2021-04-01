@@ -37,6 +37,8 @@
             </c:otherwise>
         </c:choose>
 
+
+        <button><a href="Controller?command=download">Download woordenlijst</a></button>
     </section>
 </main>
 

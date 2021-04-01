@@ -34,6 +34,7 @@
           <element id="library" level="project" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" />
           <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.11.0" />
           <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.14.0" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

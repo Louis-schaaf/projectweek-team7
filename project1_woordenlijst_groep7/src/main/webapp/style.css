@@ -68,7 +68,7 @@ h1 {
     color: white;
 }
 
-li:first-child {
+nav li:first-child {
     margin-bottom: 20px;
     flex: 2;
 }
@@ -112,13 +112,30 @@ label {
 
 }
 
-input, textarea {
+input, textarea, select {
     display: block;
     width: 100%;
+    height: 40px;
     line-height: 2em;
     border: 1px solid #aaa;
     border-radius: 0.4rem;
 }
+
+section button {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+    height: 40px;
+    line-height: 2em;
+    border: 1px solid #aaa;
+    border-radius: 0.4rem;
+}
+
+section button a{
+    text-decoration: none;
+    color: black;
+}
+
 
 #reqFields {
     text-align: center;

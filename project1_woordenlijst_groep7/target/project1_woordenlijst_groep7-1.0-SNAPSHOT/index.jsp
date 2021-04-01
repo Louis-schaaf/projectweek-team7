@@ -11,9 +11,9 @@
     <nav>
         <ul>
             <li><h1>Beheerapplicatie woordenlijst</h1></li>
-            <li><a href="index.jsp" class="active">Home</a></li>
-            <li><a href="overview.jsp">Toon woordenlijst</a></li>
-            <li><a href="add.jsp">Nieuw woord</a></li>
+            <li><a href="Controller" class="active">Home</a></li>
+            <li><a href="Controller?command=overview">Toon woordenlijst</a></li>
+            <li><a href="Controller?command=pageAdd">Nieuw woord</a></li>
         </ul>
     </nav>
 </header>

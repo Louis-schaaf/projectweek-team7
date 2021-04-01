@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -11,9 +12,9 @@
     <nav>
         <ul>
             <li><h1>Beheerapplicatie woordenlijst</h1></li>
-            <li><a href="index.jsp" >Home</a></li>
-            <li><a href="overview.jsp" class="active">Toon woordenlijst</a></li>
-            <li><a href="add.jsp">Nieuw woord</a></li>
+            <li><a href="Controller" >Home</a></li>
+            <li><a href="Controller?command=overview" class="active">Toon woordenlijst</a></li>
+            <li><a href="Controller?command=pageAdd">Nieuw woord</a></li>
         </ul>
     </nav>
 </header>
@@ -21,9 +22,21 @@
 <main>
     <section>
         <h2>Woordenlijst</h2>
-        <ol>
-            <li>woord - niveau</li>
-        </ol>
+
+
+        <c:choose>
+            <c:when test="${woorden.size()==0}">
+                <p>Er zijn nog geen woorden toegevoegd</p>
+            </c:when>
+            <c:otherwise>
+                <ol>
+                    <c:forEach var="woord" items="${woorden}">
+                        <li>${woord.getWoord()} <c:if test="${woord.getNiveau() != null}">- ${woord.getNiveau()}</c:if></li>
+                    </c:forEach>
+                </ol>
+            </c:otherwise>
+        </c:choose>
+
     </section>
 </main>
 
